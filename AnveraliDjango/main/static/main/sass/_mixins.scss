@@ -1,0 +1,21 @@
+@mixin global {
+  @include lt-lg() {
+    @include main(116px, 35px);
+  }
+
+  @include lt-md() {
+    @include main(89px, 29px);
+  }
+
+  @include lt-sm() {
+    @include main(77px, 30px);
+  }
+
+  @include lt-mb() {
+    @include main(65px, 25px);
+  }
+
+  @include xs() {
+    @include main(54px, 20px);
+  }
+}

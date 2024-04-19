@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html dir="ltr" lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'dist/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'main/img/kaska.svg' %}" type="image/x-icon">
+
+
+
+</head>
+<body>
+<div class="up-menu">
+
+</div>
+
+<div class="page-body">
+    {% block content %}
+    {% endblock %}
+    <div id="up-btn" class="up-field">
+        <div class="up-field-right">
+            <button class="up-field-right-btn" title="Наверх">
+                <span class="material-symbols-outlined">stat_1</span>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<script src="{% static 'main/js/scripts.js' %}"></script>
+
+</html>

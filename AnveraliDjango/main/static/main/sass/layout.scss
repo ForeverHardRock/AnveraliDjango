@@ -1,0 +1,68 @@
+@mixin layout($main-bar-height, $main-bar-elements-height) {
+  $main-bar-elements-font-size: ($main-bar-elements-height*0.6);
+
+  .page-body {
+    max-width: 1640px;
+    position: relative;
+    //padding-top: $main-bar-height/4;
+    //margin: $main-bar-height auto 0;
+    margin: 0 auto 0;
+  }
+
+
+  .up-field {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    max-width: 1640px;
+    transition: 0.5s;
+    bottom: -100px;
+    z-index: 2000;
+    height: calc($main-bar-height / 2);
+
+    &-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10%;
+      display: flex;
+      justify-content: center;
+
+      &-btn {
+        background-color: $main-color-light;
+        height: calc($main-bar-height / 2);
+        width: calc($main-bar-height / 2);
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        align-items: center;
+        padding: 0;
+
+        &:hover {
+          background-color: lighten($main-color, 15%);
+          transform: scale(1.3);
+          transition: transform .2s ease;
+        }
+
+        span {
+          font-size: calc($main-bar-height / 2);
+          color: $font-color;
+        }
+      }
+    }
+  }
+}
+
+@include layout($stock-height, $stock-height-el);
+@mixin main($height, $el-height) {
+  @include layout($height, $el-height)
+}
+
+@include global
+
+
+
+
+
+
+
