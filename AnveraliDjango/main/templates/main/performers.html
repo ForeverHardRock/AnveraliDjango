@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Anverali Freelance{% endblock %}
+
+
+{% block content %}
+    <h2>Исполнители:</h2>
+    <div>
+        <ul>
+            {% for perf in performers %}
+                <li>
+                    <a href="{% url 'show_performer' perf.username %}">{{ perf.first_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

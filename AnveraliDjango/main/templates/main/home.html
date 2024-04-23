@@ -1,0 +1,28 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Anverali Freelance{% endblock %}
+
+
+{% block content %}
+    ANVERALI HOMEPAGE
+    <div>
+        {% if home_data %}
+            <p>{{ home_ul }}</p>
+            <ul>
+                {% for data in home_data %}
+                    {% if acc_type == 'performer' %}
+                        <li><a href="{% url 'show_order' data.slug %}">{{ data.title }}</a></li>
+                    {% elif acc_type == 'customer' %}
+                        <li><a href="{% url 'show_performer' data.username %}">{{ data.first_name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <a href="{% url home_link %}">{{ home_link_text }}</a>
+
+        {% else %}
+            <div><a href="{% url 'login' %}">Авторизация</a></div>
+            <div><a href="{% url 'pre_signup' %}">Регистрация</a></div>
+        {% endif %}
+    </div>
+{% endblock %}

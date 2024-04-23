@@ -1,0 +1,8 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h1>Пароль был успешно изменен!</h1>
+    <p><a href="{% url 'login' %}">Войти в аккаунт?</a></p>
+{% endblock %}

@@ -1,6 +1,9 @@
 @mixin layout($main-bar-height, $main-bar-elements-height) {
   $main-bar-elements-font-size: ($main-bar-elements-height*0.6);
+  .up-menu {
+      background-color: #23543F;
 
+  }
   .page-body {
     max-width: 1640px;
     position: relative;

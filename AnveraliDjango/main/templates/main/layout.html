@@ -16,7 +16,17 @@
 </head>
 <body>
 <div class="up-menu">
-
+    <a href="{% url 'home' %}">Anverali Freelance</a>
+    <div class="login-block">
+        {% if user.is_authenticated %}
+            <div><p>Рады вас видеть, {{ user.first_name }}</p></div>
+            <div><a href="{% url 'cabinet' %}">Личный кабинет</a></div>
+            <div><a href="{% url 'logout' %}">Выйти из аккаунта</a></div>
+        {% else %}
+            <div><a href="{% url 'login' %}">Авторизация</a></div>
+            <div><a href="{% url 'pre_signup' %}">Регистрация</a></div>
+        {% endif %}
+    </div>
 </div>
 
 <div class="page-body">

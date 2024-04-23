@@ -1,6 +1,10 @@
 /*!*************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./main/static/main/sass/app.scss ***!
   \*************************************************************************************************************************/
+.up-menu {
+  background-color: #23543F;
+}
+
 .page-body {
   max-width: 1640px;
   position: relative;
@@ -46,6 +50,9 @@
 }
 
 @media (max-width: 1279px) {
+  .up-menu {
+    background-color: #23543F;
+  }
   .page-body {
     max-width: 1640px;
     position: relative;
@@ -90,6 +97,9 @@
   }
 }
 @media (max-width: 1023px) {
+  .up-menu {
+    background-color: #23543F;
+  }
   .page-body {
     max-width: 1640px;
     position: relative;
@@ -134,6 +144,9 @@
   }
 }
 @media (max-width: 767px) {
+  .up-menu {
+    background-color: #23543F;
+  }
   .page-body {
     max-width: 1640px;
     position: relative;
@@ -178,6 +191,9 @@
   }
 }
 @media (max-width: 550px) {
+  .up-menu {
+    background-color: #23543F;
+  }
   .page-body {
     max-width: 1640px;
     position: relative;
@@ -222,6 +238,9 @@
   }
 }
 @media (max-width: 414px) {
+  .up-menu {
+    background-color: #23543F;
+  }
   .page-body {
     max-width: 1640px;
     position: relative;

@@ -1,0 +1,39 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ order.title }}{% endblock %}
+
+
+{% block content %}
+    <div>
+        <h2>{{ order.title }}</h2>
+        <p>
+            <span>Описание:</span><br>
+            <span>{{ order.description }}</span>
+        </p>
+        <p>Цена: {{ order.price }}</p>
+        <div>
+            {% if dynamic_field %}
+                {% if type_field == 'str' %}
+                    <p>{{ dynamic_field }}</p>
+                {% elif type_field == 'btn' %}
+                    <form action="{% url 'show_order' order.slug %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="{{ dynamic_field }}" value="{{ dynamic_field }}">{{ dynamic_field }}</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+            {% if performers_list %}
+                {% for perf in performers_list %}
+                    <div>
+                        <a href="{% url 'show_performer' perf.username %}">{{ perf.first_name }}</a>
+                        <form action="{% url 'show_order' order.slug %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" name="perf_accept" value="{{ perf.id }}">Принять</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

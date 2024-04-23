@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <p>{{ performer_user.first_name }}</p>
+        <p>Рейтинг исполнителя: {{ performer_user.rating }}</p>
+        {% if performer_user.photo != Null and performer_user.photo != "" %}
+            <img src="{{ performer_user.photo.url }}" alt="" style="height: 100px">
+        {% endif %}
+        <p>
+            <span>Опыт исполнителя:</span>
+            <span>{{ performer_user.exp }}</span>
+        </p>
+
+    </div>
+{% endblock %}

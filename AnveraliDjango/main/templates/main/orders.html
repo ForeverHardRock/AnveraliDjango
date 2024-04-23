@@ -1,0 +1,18 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Anverali Freelance{% endblock %}
+
+
+{% block content %}
+    <h2>Доступные заказы:</h2>
+    <div>
+        <ul>
+            {% for order in orders %}
+                <li>
+                    <a href="{% url 'show_order' order.slug %}">{{ order.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

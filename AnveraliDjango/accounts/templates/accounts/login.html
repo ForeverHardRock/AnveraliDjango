@@ -1,0 +1,45 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="login-form">
+        <div>
+            {% if login_error %}
+                <p>{{ login_error }}</p>
+            {% endif %}
+
+            {% if next %}
+                {% if user.is_authenticated %}
+                    <p>У вашей учетной записи нет доступа к этой странице. Пожалуйста, войдите под учетной записью, у которой есть доступ.</p>
+                {% else %}
+                    <p>Пожалуйста, войдите, чтобы увидеть эту страницу.</p>
+                {% endif %}
+            {% endif %}
+
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <table class="login-form-table">
+
+                    <tr>
+                        <td>Имя пользователя</td>
+                        <td class="login-form-input">{{ form.username }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Пароль</td>
+                        <td class="login-form-input">{{ form.password }}</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td><input type="submit" value="Войти" /></td>
+                        <td class="login-form-right"><a href="{% url 'reset_password' %}">Забыли пароль?</a></td>
+                    </tr>
+    {#            <input type="hidden" name="next" value="{{ next }}" />#}
+                </table>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

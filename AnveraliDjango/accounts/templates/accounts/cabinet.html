@@ -1,0 +1,47 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Личный кабинет</h2>
+    <a href="{% url 'edit_profile' %}">Редактировать профиль</a>
+    {% if user.acc_type == 'customer' %}
+        <a href="{% url 'new_order' %}">Опубликовать задачу</a>
+    {% endif %}
+    <div class="cabinet-page">
+        <p>{{ user.first_name }}</p>
+        {% if user.acc_type != 'admin' %}
+            <p>Ваш рейтинг: {{ user.rating }}</p>
+        {% endif %}
+        {% if user.photo != Null and user.photo != "" %}
+            <img src="{{ user.photo.url }}" alt="" style="height: 100px">
+        {% endif %}
+        {% if user.acc_type == 'customer' %}
+            <p>Потрачено средств: {{ user.spending }}</p>
+        {% endif %}
+        {% if user.acc_type != 'admin' %}
+
+            <div>
+                <p>{{ job_title }}</p>
+                {% if user_orders %}
+                    <ul>
+                        {% for order in user_orders %}
+                            <li>
+                                <a href="{% url 'show_order' order_slug=order.slug %}">{{ order.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {% if user.acc_type == 'customer' %}
+                        <p>Пока что вы не опубликували ни одной задачи</p>
+                        <a href="{% url 'new_order' %}">Опубликовать задачу</a>
+                    {% elif user.acc_type == 'performer' %}
+                        <p>Пока что вы не приняли ни одной задачи</p>
+                        <a href="{% url 'show_orders' %}">Посмотреть доступные задачи</a>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
